@@ -3,6 +3,7 @@
 int main()
 {
     Game Game;
+    Game.setupgame();
     Game.printmap();
 
 
