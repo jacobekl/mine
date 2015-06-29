@@ -7,6 +7,8 @@ Game::Game()
 
 void Game::setupgame()
 {
+    int x,y;
+
     for(int i = 0;i < 10;i++)
     {
         for(int j = 0;j < 10;j++)
@@ -15,8 +17,16 @@ void Game::setupgame()
             gmap[i][j].mine=false;
         }
     }
-
-    //Välj 10 rutor och gör det minnor
+    for(int i = 0;i < 10;i++)
+    {
+        x = rand() % 10;
+        y = rand() % 10;
+        if(gmap[x][y].mine==true)
+        {
+            i--;
+        }
+        gmap[x][y].mine=true;
+    }
 }
 
 void Game::turn()
@@ -32,7 +42,7 @@ void Game::printmap()
         cout << j;
         for(int i = 0; i < 10; i++)
         {
-            cout << "|" << gmap[0][1].adj;
+            cout << "|" << gmap[j][i].adj;
         }
         cout << "|" << endl;
     }
