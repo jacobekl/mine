@@ -29,8 +29,164 @@ void Game::setupgame()
     }
 }
 
-void Game::turn()
+bool Game::turn()
 {
+    int x,y,adj;
+    cout << "y: x: ";
+    cin >> x;
+    cin >> y;
+
+    if(gmap[x][y].mine==true)
+    {
+        gmap[x][y].adj = '*';
+        return true;
+    }
+    adj = 0;
+
+    if(x == 0 || y == 0 || x == 9 || y == 9)
+    {
+        if(x== 0 && y == 0)
+        {
+            if(gmap[x+1][y].mine==true)
+                adj++;
+
+            if(gmap[x][y+1].mine==true)
+                adj++;
+
+            if(gmap[x+1][y+1].mine==true)
+                adj++;
+        }
+
+        else if(x== 0 && y == 9)
+        {
+            if(gmap[x+1][y].mine==true)
+                adj++;
+
+            if(gmap[x][y-1].mine==true)
+                adj++;
+
+            if(gmap[x+1][y-1].mine==true)
+                adj++;
+        }
+
+        else if(x== 9 && y == 0)
+        {
+            if(gmap[x-1][y].mine==true)
+                adj++;
+
+            if(gmap[x][y+1].mine==true)
+                adj++;
+
+            if(gmap[x-1][y+1].mine==true)
+                adj++;
+        }
+
+                else if(x== 9 && y == 9)
+        {
+            if(gmap[x-1][y].mine==true)
+                adj++;
+
+            if(gmap[x][y-1].mine==true)
+                adj++;
+
+            if(gmap[x-1][y-1].mine==true)
+                adj++;
+        }
+
+        else if(x ==0)
+        {
+
+        if(gmap[x][y+1].mine==true)
+            adj++;
+        if(gmap[x][y-1].mine==true)
+            adj++;
+
+        if(gmap[x+1][y-1].mine==true)
+            adj++;
+        if(gmap[x+1][y].mine==true)
+            adj++;
+        if(gmap[x+1][y+1].mine==true)
+            adj++;
+
+        }
+
+        else if(x ==9)
+        {
+
+        if(gmap[x][y+1].mine==true)
+            adj++;
+        if(gmap[x][y-1].mine==true)
+            adj++;
+
+        if(gmap[x-1][y-1].mine==true)
+            adj++;
+        if(gmap[x-1][y].mine==true)
+            adj++;
+        if(gmap[x-1][y+1].mine==true)
+            adj++;
+
+        }
+
+        else if(y ==0)
+        {
+
+        if(gmap[x+1][y].mine==true)
+            adj++;
+        if(gmap[x-1][y].mine==true)
+            adj++;
+
+        if(gmap[x+1][y+1].mine==true)
+            adj++;
+        if(gmap[x][y+1].mine==true)
+            adj++;
+        if(gmap[x-1][y+1].mine==true)
+            adj++;
+
+        }
+
+        else if(y ==9)
+        {
+
+        if(gmap[x+1][y].mine==true)
+            adj++;
+        if(gmap[x-1][y].mine==true)
+            adj++;
+
+        if(gmap[x+1][y-1].mine==true)
+            adj++;
+        if(gmap[x][y-1].mine==true)
+            adj++;
+        if(gmap[x-1][y-1].mine==true)
+            adj++;
+
+        }
+
+    }
+    else
+    {
+        if(gmap[x-1][y-1].mine==true)
+            adj++;
+        if(gmap[x][y-1].mine==true)
+            adj++;
+        if(gmap[x+1][y-1].mine==true)
+            adj++;
+
+        if(gmap[x-1][y].mine==true)
+            adj++;
+        if(gmap[x+1][y].mine==true)
+            adj++;
+
+        if(gmap[x-1][y+1].mine==true)
+            adj++;
+        if(gmap[x][y+1].mine==true)
+            adj++;
+        if(gmap[x+1][y+1].mine==true)
+            adj++;
+    }
+
+    gmap[x][y].adj = 48 + adj;
+    return false;
+
 
 }
 

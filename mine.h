@@ -23,9 +23,9 @@ public:
 
     Game();
     void setupgame();
-    void turn();
+    bool turn();
     void printmap();
-    bool wincheack();
+
 
 
 };
