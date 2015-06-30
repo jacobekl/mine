@@ -31,7 +31,7 @@ void Game::setupgame()
 
 bool Game::turn()
 {
-    int x,y,adj;
+    int x,y,adj,win;
     cout << "y: x: ";
     cin >> x;
     cin >> y;
@@ -183,8 +183,24 @@ bool Game::turn()
         if(gmap[x+1][y+1].mine==true)
             adj++;
     }
-
     gmap[x][y].adj = 48 + adj;
+
+    win = 0;
+
+    for(int i = 0;i < 10;i++)
+    {
+        for(int j = 0;j < 10;j++)
+        {
+            if(gmap[i][j].adj!=' ')
+                win++;
+        }
+    }
+
+    if(win==90)
+    {
+        cout << "congratulations" << endl;
+        return true;
+    }
     return false;
 
 
