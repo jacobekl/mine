@@ -36,6 +36,9 @@ bool Game::turn()
     cin >> x;
     cin >> y;
 
+    if(x > 9 || x < 0 || x > 9 || x < 0)
+        return false;
+
     if(gmap[x][y].mine==true)
     {
         gmap[x][y].adj = '*';
